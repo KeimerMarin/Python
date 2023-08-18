@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Buscar Producto</h1>
+    <form method="post" action="{% url 'buscar' %}">
+        {% csrf_token %}
+        
+        {{ search_form.query.label_tag }} {{ search_form.query }}
+        
+        <button type="submit">Buscar</button>
+    </form>
+    
+    <h2>Resultados de la búsqueda:</h2>
+    <ul>
+        {% for result in results %}
+            <li>{{ result.nombre }} - {{ result.email }}</li>
+        {% empty %}
+            <li>No se encontraron resultados</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

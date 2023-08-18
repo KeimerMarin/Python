@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Ingresar Datos</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <label for="{{ categoria_form.nombre.id_for_label }}">Categoría:</label>
+        {{ categoria_form.nombre }}
+        
+        {{ producto_form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}
